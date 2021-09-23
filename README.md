@@ -3,6 +3,15 @@
 ## <br />Descrição do Lab.
 O objetivo do projeto é criar um App de `Conversão de moedas/cambio` do zero mostrando o processo de desenvolvimento usando Kotlin, uma das linguagens de programação de maior ascensão dos últimos anos. Além disto, desafiar a evolução do App e entregar uma solução mais robusta pensando sempre na melhor experiência do usuário.
 
+## Tencologias Usadas.
+- Coroutines
+- Injeção de Dependências Koin
+- MVVM
+- Room
+- Lifecicle
+- API
+- Retrofit
+
 ## Aulas e materiais de estudo.
 - Aula - 01: Apresentação pessoal e apresentação do curso.
   - [Apresentação](https://drive.google.com/file/d/1RVBvVZRMpNvu80VWkZD_aP2tno0-fDoX/view)
