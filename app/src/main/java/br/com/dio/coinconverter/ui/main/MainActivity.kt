@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         bindAdapters()
         bindListeners()
         bindObserve()
-
         setSupportActionBar(binding.toolbar)
     }
 
@@ -61,10 +60,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun bindListeners() {
 
-        // doAfterTextChanged identifica se algo foi digitado
         binding.tilValue.editText?.doAfterTextChanged {
             binding.btnConverter.isEnabled = it != null && it.toString().isNotEmpty()
-                    && it.toString() != "0" && it.toString() != "0.0"
+                    && it.toString() != "0" && it.toString() != "0." && it.toString() != "0.0"
             binding.btnSave.isEnabled = false
         }
 
@@ -72,8 +70,13 @@ class MainActivity : AppCompatActivity() {
             it.hideSoftKeyboard()
 
             val search = "${binding.tilFrom.text}-${binding.tilTo.text}"
-
             viewModel.getExchangeValue(search)
+        }
+
+        binding.imgSwap.setOnClickListener {
+            val from = binding.tilFrom.text
+            binding.tvFrom.setText(binding.tilTo.text, false)
+            binding.tvTo.setText(from, false)
         }
 
         binding.btnSave.setOnClickListener {
@@ -112,7 +115,6 @@ class MainActivity : AppCompatActivity() {
 
         val selectedCoin = binding.tilTo.text
         val coin = Coin.getByName(selectedCoin)
-
         val result = it.exchange.bid * binding.tilValue.text.toDouble()
 
         binding.tvResult.text = result.formatCurrency(coin.locale)
